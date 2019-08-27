@@ -22,12 +22,12 @@ export class AppComponent {
       icon: 'flag'
     },
     {
-      title:  'Pesquisar QRcode',
+      title:  'Escanear QRcode',
       url: '/pqrcode',
       icon: 'qr-scanner'
     },
     {
-      title:  'Mais informações',
+      title:  'informações',
       url:  '/minformacoes',
       icon: 'information-circle'
     },
