@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: 'pqrcode', loadChildren: './pqrcode/pqrcode.module#PQRCodePageModule' },
   { path: 'minformacoes', loadChildren: './minformacoes/minformacoes.module#MInformacoesPageModule' },
   { path: 'sobre', loadChildren: './sobre/sobre.module#SobrePageModule' },
-  { path: 'principal', loadChildren: './principal/principal.module#PrincipalPageModule' }
+  { path: 'principal', loadChildren: './principal/principal.module#PrincipalPageModule' },  { path: 'login', loadChildren: './auth/login/login.module#LoginPageModule' }
+
 ];
 
 @NgModule({
