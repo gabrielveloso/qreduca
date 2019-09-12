@@ -1,9 +1,68 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content	class="swiper-no-swiping">
+  <div  class="logo">
+    <img  src="assets/img/logo.png">
+  </div>
+  <div  class="container top">
+    
+
+    <ion-segment (ionChange)="segmentChanged($event)" mode="ios" value="login">
+        <ion-segment-button mode="ios" value="login">
+          <ion-label>Login</ion-label>
+        </ion-segment-button>
+        <ion-segment-button mode="ios" value="register">
+          <ion-label>Cadastro</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+  </div>
+
+  <div class="container bottom ion-text-center">
+      <span>  Projeto de Extensão IFPE Palmares   </span>
+  </div>
+
+  
+  <div>
+      <div  class="loginback">
+      </div>
+  </div>
+    
+  <ion-slides>
+    <ion-slide>
+      <div class="slide-inner ion-padding">
+        <span> Login  </span>
+        <ion-item class="ion-margin-top" lines="none">
+          <ion-input  type="email"  placeholder="E-mail"></ion-input>
+        </ion-item>
+        <ion-item class="ion-margin-top" lines="none">
+          <ion-input  type="password"  placeholder="Senha"></ion-input>
+        </ion-item>
+        <ion-button class="ion-margin-top" (click)="logar()" color="dark" expand="block">
+          Entrar
+        </ion-button>
+      
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+        <div class="slide-inner ion-padding">
+          <span>  Cadastro  </span>
+          <ion-item class="ion-margin-top"  lines="none">
+            <ion-input  type="string" placeholder="Nome"></ion-input>
+          </ion-item>
+          <ion-item class="ion-margin-top" lines="none">
+            <ion-input  type="email"  placeholder="E-mail"></ion-input>
+          </ion-item>
+          <ion-item class="ion-margin-top" lines="none">
+            <ion-input  type="password"  placeholder="Senha"></ion-input>
+          </ion-item>
+          <ion-button class="ion-margin-top" (click)="cadastrar()" color="dark" expand="block">
+            Cadastrar
+          </ion-button>
+        
+        </div>
+      </ion-slide>
+  </ion-slides>
 
 </ion-content>

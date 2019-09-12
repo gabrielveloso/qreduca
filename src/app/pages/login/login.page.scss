@@ -1,0 +1,58 @@
+.logo{
+    position: absolute;
+    left:   23%;
+    right:  0%;
+    height: 100%;
+    width:  60%;
+    top:    1%;
+}
+.container  {
+    position: absolute;
+    left:    0;
+    right:   0;
+    width:   70%;
+    margin:  0 auto;
+    z-index: 2;
+
+    &.top{
+        top:    30%;
+    }
+    &.bottom{
+        bottom: 10%;
+
+        span{
+            color:  #fff;
+        }
+    }
+}
+.loginback  {
+    position:   absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 45%;
+    background: #3880ff;
+
+}
+
+ion-slides {
+    left: 0;
+    right: 0;
+    top: 35%;
+
+    .slide-inner    {
+        width: 75%;
+        color:  #fff;
+        background:linear-gradient(#0cd1e8,#3880ff,#3880ff);
+        border-radius: 10px;
+
+        ion-item    {
+            --background:  rgba(255, 255, 255, 0.2);
+            --border-radius:    10px;
+        }
+
+        ion-input   {
+            --color:    #fff;
+        }
+    }
+}
