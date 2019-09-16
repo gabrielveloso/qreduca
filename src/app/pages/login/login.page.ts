@@ -8,7 +8,7 @@ import { IonSlides} from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  @ViewChild(IonSlides) slides: IonSlides;
+  @ViewChild(IonSlides,  {static: false}) slides: IonSlides;
   constructor() { }
 
   ngOnInit() {}
