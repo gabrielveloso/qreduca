@@ -1,0 +1,48 @@
+.back_g{
+    position:   absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background: linear-gradient(white,white,#0cd1e8);
+}
+.legend{
+    text-align: center;
+    color:  #778899;
+}
+.container{
+    position: absolute;
+    left:    0;
+    right:   0;
+    height: 30%;
+    margin:  0  auto;
+    z-index: 2;
+    background: white;
+    font-style: normal;
+    font-family: sans-serif;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: 1px;
+    
+
+    &.info{
+        top:1%;
+
+            span{
+                text-align: justify;
+                color: #darkgray;
+                font-size:  14px;
+            }
+    }
+
+    &.dev{
+        background: white;
+        width: 70%;
+        top: 90%;
+        border-radius: 15px;
+        padding: 5px;
+        .span{
+            color: black;
+        }
+    }
+}
