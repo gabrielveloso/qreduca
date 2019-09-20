@@ -17,19 +17,19 @@ export class AppComponent {
       icon: 'map'
     },
     {
-      title: 'Sobre o aplicativo',
-      url: '/sobre',
-      icon: 'flag'
-    },
-    {
       title:  'Escanear QRcode',
       url: '/pqrcode',
       icon: 'qr-scanner'
     },
     {
-      title:  'informações',
+      title:  'Informações',
       url:  '/minformacoes',
       icon: 'information-circle'
+    },
+    {
+      title: 'Sobre',
+      url: '/sobre',
+      icon: 'flag'
     },
     {
       title:  'Login',

@@ -1,0 +1,25 @@
+.bg{
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+
+    background: linear-gradient(#fff,#fff,#0cd1e8);
+
+    .sobre{
+        position: absolute;
+        left: 4%;
+        right: 4%;
+        
+
+        span{
+            text-align: justify;
+            font-size: 15px;
+            font-family: sans-serif;
+            font-style: normal;
+        }
+
+    }
+}
