@@ -13,7 +13,7 @@ export class ListaItensPage implements OnInit {
   public itens = new Array<Item>();
 
   constructor(private itemService: ItemService) {
-    this.itemService.getItens().subscribe(data =>{
+    this.itemSubscription = this.itemService.getItens().subscribe(data =>{
       this.itens = data
     })
    }
