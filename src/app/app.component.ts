@@ -35,6 +35,16 @@ export class AppComponent {
       title:  'Login',
       url:  '/login',
       icon: 'contact'
+    },
+    {
+      title:  'Lista',
+      url:  '/lista-itens',
+      icon: 'contact'
+    },
+    {
+      title:  'Adicionar',
+      url:  '/adicionar-item',
+      icon: 'contact'
     }
   ];
 
