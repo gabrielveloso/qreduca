@@ -2,7 +2,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
     <ion-title>Adicionar Item</ion-title>
@@ -15,15 +15,21 @@
       <ion-input type="text" [(ngModel)]="item.titulo" placeholder="Título"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="text" [(ngModel)]="item.descricao" placeholder="Descricao"></ion-input>
-    </ion-item>   
+      <ion-input type="text" [(ngModel)]="item.descricao" placeholder="Descriçao"></ion-input>
+    </ion-item> 
+    <ion-item>
+      <ion-input  type="number" [(ngModel)]="item.ano"  placeholder="Ano de criação"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <ion-input  type="text" [(ngModel)]="item.foto"  placeholder="Link da imagem"></ion-input>
+    </ion-item>
   </ion-list>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
     <ion-button (click)="saveItem()" expand="block">
-      Salvar produto
+      Salvar Item
     </ion-button>
   </ion-toolbar>
 </ion-footer>
