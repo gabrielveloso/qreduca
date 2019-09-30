@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Item Histórico</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <ion-list>        
+        <ion-card>
+            <img src={{item.foto}} />
+            <ion-card-header>              
+              <ion-card-title>{{item.titulo}}</ion-card-title>
+              <ion-card-subtitle>{{item.ano}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              {{item.descricao}}
+            </ion-card-content>
+          </ion-card>
+              
+      </ion-list>
+    
+
+</ion-content>

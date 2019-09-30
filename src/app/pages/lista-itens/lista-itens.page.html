@@ -28,19 +28,19 @@
   </ion-list>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let product of itens">
-      <ion-item button [routerLink]="['/sobre']">
+    <ion-item-sliding *ngFor="let item of itens">
+      <ion-item button [routerLink]="['/detalhamento-item', item.id]">
         <ion-avatar slot="end">
             <div  class="foto">
-              <img [src]="product.foto">
+              <img [src]="item.foto">
             </div>
                      
         </ion-avatar>
 
         <ion-label>
-          {{ product.titulo }}
-          <p class="desc">{{ product.descricao }}</p>
-          <p class="ano">{{ product.ano | date: 'yyyy' }}</p>
+          {{ item.titulo }}
+          <p class="desc">{{ item.descricao }}</p>
+          <p class="ano">{{ item.ano | date: 'yyyy' }}</p>
           
         </ion-label>       
       </ion-item>

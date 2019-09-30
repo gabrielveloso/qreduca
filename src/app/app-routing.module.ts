@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'principal', loadChildren: './pages/principal/principal.module#PrincipalPageModule' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'lista-itens', loadChildren: './pages/lista-itens/lista-itens.module#ListaItensPageModule' },
-  { path: 'adicionar-item', loadChildren: './pages/adicionar-item/adicionar-item.module#AdicionarItemPageModule' }
+  { path: 'adicionar-item', loadChildren: './pages/adicionar-item/adicionar-item.module#AdicionarItemPageModule' },
+  { path: 'detalhamento-item/:id', loadChildren: './pages/detalhamento-item/detalhamento-item.module#DetalhamentoItemPageModule' }
 
 ];
 

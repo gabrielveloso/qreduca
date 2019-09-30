@@ -10,7 +10,7 @@ export class ItemService {
   private itemCollections: AngularFirestoreCollection<Item>;
 
   constructor(private afs: AngularFirestore) {
-    this.itemCollections = this.afs.collection<Item>('Products');
+    this.itemCollections = this.afs.collection<Item>('Itens');
    }
 
 

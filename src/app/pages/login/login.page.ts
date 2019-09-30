@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  @ViewChild(IonSlides) slides: IonSlides;
+  @ViewChild(IonSlides, {static: false}) slides: IonSlides;
   public userLogin: User = {};
   public userRegister: User = {};
   private loading: any;
