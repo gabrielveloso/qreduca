@@ -13,7 +13,7 @@ export class AppComponent {
   public appPages = [
     {
       title: 'Principal',
-      url: '/principal',
+      url: '/mapa',
       icon: 'map'
     },
     {
