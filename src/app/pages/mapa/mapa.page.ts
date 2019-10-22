@@ -31,8 +31,8 @@ export class MapaPage implements OnInit {
     await this.loading.present();
     
     Environment.setEnv({
-      'API_KEY_FOR_BROWSER_RELEASE': '(AIzaSyAgJzJg8XPkzG3IIcO4FkQTJpq23BsgZUs)',
-      'API_KEY_FOR_BROWSER_DEBUG': '(AIzaSyAgJzJg8XPkzG3IIcO4FkQTJpq23BsgZUs)'
+      'API_KEY_FOR_BROWSER_RELEASE': 'chave',
+      'API_KEY_FOR_BROWSER_DEBUG': 'chave'
     });
 
     const mapOptions: GoogleMapOptions = {
