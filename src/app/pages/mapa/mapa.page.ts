@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Platform, LoadingController } from '@ionic/angular';
-import { Environment, GoogleMaps , GoogleMap, GoogleMapOptions, GoogleMapsEvent, MyLocation } from '@ionic-native/google-maps';
+import { Environment, GoogleMaps , GoogleMap, GoogleMapOptions, GoogleMapsEvent, MyLocation, GoogleMapsAnimation } from '@ionic-native/google-maps';
 import { map } from 'rxjs/operators';
+import { Icon } from 'ionicons/dist/types/icon/icon';
 
 @Component({
   selector: 'app-mapa',
@@ -31,8 +32,8 @@ export class MapaPage implements OnInit {
     await this.loading.present();
     
     Environment.setEnv({
-      'API_KEY_FOR_BROWSER_RELEASE': 'chave',
-      'API_KEY_FOR_BROWSER_DEBUG': 'chave'
+      'API_KEY_FOR_BROWSER_RELEASE': '',
+      'API_KEY_FOR_BROWSER_DEBUG': ''
     });
 
     const mapOptions: GoogleMapOptions = {
@@ -43,7 +44,7 @@ export class MapaPage implements OnInit {
 
     this.map = GoogleMaps.create(this.mapElement, mapOptions);
 
-    try{
+    try {
       await this.map.one(GoogleMapsEvent.MAP_READY);
 
       this.addOriginMarker();
@@ -55,6 +56,18 @@ export class MapaPage implements OnInit {
   async addOriginMarker() {
     try{
       const myLocation: MyLocation = await this.map.getMyLocation();
+
+      await this.map.moveCamera({
+        target: myLocation.latLng,
+        zoom: 18
+      });
+
+      this.map.addMarkerSync({
+        title: 'Origem',
+        Icon: '#000',
+        animation: GoogleMapsAnimation.DROP,
+        position: myLocation.latLng
+      });
       console.log(myLocation);
     } catch(error){
       console.error(error);
