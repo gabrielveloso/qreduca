@@ -9,13 +9,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" color="medium">
   <ion-list>
+    <ion-input type="hidden" [(ngModel)]="item.id" placeholder="id"></ion-input>
     <ion-item>
       <ion-input type="text" [(ngModel)]="item.titulo" placeholder="Título"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="text" [(ngModel)]="item.descricao" placeholder="Descriçao"></ion-input>
+      <ion-textarea rows="6" cols="20" [(ngModel)]="item.descricao" placeholder="Enter any notes here..."></ion-textarea>
+     
     </ion-item> 
     <ion-item>
       <ion-input  type="number" [(ngModel)]="item.ano"  placeholder="Ano de criação"></ion-input>
@@ -23,13 +25,44 @@
     <ion-item>
       <ion-input  type="text" [(ngModel)]="item.foto"  placeholder="Link da imagem"></ion-input>
     </ion-item>
+    <ion-item>
+        <ion-input  type="text" [(ngModel)]="item.latitude"  placeholder="latitude"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-input  type="text" [(ngModel)]="item.longitude"  placeholder="longitude"></ion-input>
+        </ion-item>
   </ion-list>
+  <br>
+  <br>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of itens">
+      <ion-item button (click)="selecionar(item.id)">         
+        <ion-avatar slot="start">
+          <img [src]="item.foto">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ item.titulo }}</h2>
+          <h3>{{ item.ano | date: 'yyyy' }}</h3>
+          <p>{{ item.descricao }}</p>
+        </ion-label>            
+      </ion-item>
+
+      
+    </ion-item-sliding>
+  </ion-list>
+
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
     <ion-button (click)="saveItem()" expand="block">
-      Salvar Item
+      Salvar/Atualizar 
+    </ion-button>
+    <ion-button (click)="remover(item.id)" expand="block">
+        Remover 
+      </ion-button>
+    <ion-button (click)="item = {}" expand="block">
+          limpar 
     </ion-button>
   </ion-toolbar>
 </ion-footer>
