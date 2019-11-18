@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Platform, LoadingController, NavController } from '@ionic/angular';
+import { Platform, LoadingController, NavController, AlertController } from '@ionic/angular';
 import { Environment, GoogleMaps , GoogleMap, GoogleMapOptions, GoogleMapsEvent, MyLocation, GoogleMapsAnimation, LatLng, MarkerIcon, Marker } from '@ionic-native/google-maps';
 import { map } from 'rxjs/operators';
 import { Icon } from 'ionicons/dist/types/icon/icon';
@@ -23,7 +23,8 @@ export class MapaPage implements OnInit {
     private Platform: Platform,
     private loadingCtrl: LoadingController,
     private itemService: ItemService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    public alertController: AlertController
   ) { 
     this.itemSubscription = this.itemService.getItens().subscribe(data =>{
       this.itens = data
@@ -64,6 +65,32 @@ export class MapaPage implements OnInit {
     } 
   }
 
+  async presentAlertConfirm(item) {
+    const alert = await this.alertController.create({
+      header: 'Olá',
+      message: '<strong>Escolha umas das opções</strong>!!!',
+      buttons: [
+        {
+          text: 'Mostrar rota com o Waze',          
+          cssClass: 'primary',
+          handler: (blah) => {
+            this.navCtrl.navigateForward('/detalhamento-item/'+item.id);
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Mostrar história do ítem',
+          cssClass: 'primary',
+          handler: () => {
+            this.navCtrl.navigateForward('/detalhamento-item/'+item.id);
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
   async addOriginMarker() {
     try{
       const myLocation: MyLocation = await this.map.getMyLocation();
@@ -100,8 +127,8 @@ export class MapaPage implements OnInit {
             });
 
             marker.addEventListener(GoogleMapsEvent.INFO_CLICK).subscribe(e => {
-              alert('teste');
-            this.navCtrl.navigateForward('/detalhamento-item/'+item.id);
+              this.presentAlertConfirm(item);
+            
               console.log(JSON.stringify(e));
           });
           }          
