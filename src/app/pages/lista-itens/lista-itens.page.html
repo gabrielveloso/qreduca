@@ -7,47 +7,55 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <ion-list *ngIf="!itens.length">
-    <ion-item *ngFor="let item of [0, 1, 2]">
-      <ion-avatar slot="start">
-        <ion-skeleton-text animated></ion-skeleton-text>
-      </ion-avatar>
-      <ion-label>
-        <h3>
-          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
-        </h3>
-        <p>
-          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
-        </p>
-        <p>
-          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
-        </p>
-      </ion-label>
-    </ion-item>
+
+    <ion-card>
+      <ion-item *ngFor="let item of [0, 1, 2]">
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+
+
   </ion-list>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let item of itens">
-      <ion-item button [routerLink]="['/detalhamento-item', item.id]">
-        <ion-avatar slot="end">
-            <div  class="foto">
+    <ion-card>
+      <ion-item-sliding *ngFor="let item of itens">
+        <ion-item button [routerLink]="['/detalhamento-item', item.id]">
+          <ion-avatar slot="end">
+            <div class="foto">
               <img [src]="item.foto">
             </div>
-                     
-        </ion-avatar>
 
-        <ion-label>
-          {{ item.titulo }}
-          <p class="desc">{{ item.descricao }}</p>
-          <p class="ano">{{ item.ano | date: 'yyyy' }}</p>
-          
-        </ion-label>       
-      </ion-item>
+          </ion-avatar>
 
-      
-    </ion-item-sliding>
+          <ion-label>
+            {{ item.titulo }}
+            <p class="ano">{{ item.ano | date: 'yyyy' }}</p>
+
+          </ion-label>
+        </ion-item>
+
+
+      </ion-item-sliding>
+    </ion-card>
   </ion-list>
 
-  
+
+
+
 </ion-content>
