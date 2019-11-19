@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Platform, LoadingController } from '@ionic/angular';
-import { Environment, GoogleMaps , GoogleMap, GoogleMapOptions, GoogleMapsEvent, MyLocation, GoogleMapsAnimation, LatLng, MarkerIcon } from '@ionic-native/google-maps';
+import { Platform, LoadingController, NavController, AlertController } from '@ionic/angular';
+import { Environment, GoogleMaps , GoogleMap, GoogleMapOptions, GoogleMapsEvent, MyLocation, GoogleMapsAnimation, LatLng, MarkerIcon, Marker } from '@ionic-native/google-maps';
 import { map } from 'rxjs/operators';
 import { Icon } from 'ionicons/dist/types/icon/icon';
 import { ItemService } from 'src/app/services/item.service';
@@ -22,7 +22,9 @@ export class MapaPage implements OnInit {
   constructor(
     private Platform: Platform,
     private loadingCtrl: LoadingController,
-    private itemService: ItemService
+    private itemService: ItemService,
+    private navCtrl: NavController,
+    public alertController: AlertController
   ) { 
     this.itemSubscription = this.itemService.getItens().subscribe(data =>{
       this.itens = data
@@ -63,6 +65,32 @@ export class MapaPage implements OnInit {
     } 
   }
 
+  async presentAlertConfirm(item) {
+    const alert = await this.alertController.create({
+      header: 'Olá',
+      message: '<strong>Escolha umas das opções</strong>!!!',
+      buttons: [
+        {
+          text: 'Mostrar rota com o Waze',          
+          cssClass: 'primary',
+          handler: (blah) => {
+            this.navCtrl.navigateForward('/detalhamento-item/'+item.id);
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Mostrar história do ítem',
+          cssClass: 'primary',
+          handler: () => {
+            this.navCtrl.navigateForward('/detalhamento-item/'+item.id);
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
   async addOriginMarker() {
     try{
       const myLocation: MyLocation = await this.map.getMyLocation();
@@ -91,18 +119,29 @@ export class MapaPage implements OnInit {
               
             };
             
-            this.map.addMarkerSync({
-              title: 'Origem',              
-              icon:'#0F0',
+            let marker: Marker = this.map.addMarkerSync({
+              title: '<b>'+item.titulo+'</b>',              
+              icon:'#0ff',
               animation: GoogleMapsAnimation.DROP,
               position: position
             });
+
+            marker.addEventListener(GoogleMapsEvent.INFO_CLICK).subscribe(e => {
+              this.presentAlertConfirm(item);
+            
+              console.log(JSON.stringify(e));
+          });
           }          
       }
 
       this.map.addMarkerSync({
         title: 'Origem',
-        Icon: '#000',
+        icon: { url : 'assets/img/pin2.png' ,
+          size: {
+            width: 24,
+            height: 24
+          }
+        },
         animation: GoogleMapsAnimation.DROP,
         position: myLocation.latLng
       });

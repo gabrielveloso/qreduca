@@ -29,11 +29,20 @@ export class ItemService {
 
    getItem(id: string){      
       return this.itemCollections.doc<Item>(id).valueChanges();
+      
    }
 
    addItem(item: Item){
-      return this.itemCollections.add(item);
+      return this.itemCollections.add(item);          
    }
+
+   updateTodo(todo: Item, id: string) {
+    return this.itemCollections.doc(id).update(todo);
+  }
+
+  removeTodo(id) {
+    return this.itemCollections.doc(id).delete();
+  }
 
    
 
