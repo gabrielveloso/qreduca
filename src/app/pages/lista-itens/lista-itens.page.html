@@ -40,15 +40,12 @@
     <ion-card>
       <ion-item-sliding *ngFor="let item of itens">
         <ion-item button [routerLink]="['/detalhamento-item', item.id]">
-          <ion-avatar slot="end">
-            <div class="foto">
-              <img [src]="item.foto">
-            </div>
-
-          </ion-avatar>
+          <ion-thumbnail slot="end">            
+              <img [src]="item.foto"> 
+          </ion-thumbnail>
 
           <ion-label>
-            {{ item.titulo }}
+            <p class="ano">{{ item.titulo }}</p>
             <p class="ano">{{ item.ano | date: 'yyyy' }}</p>
 
           </ion-label>

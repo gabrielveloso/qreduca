@@ -27,6 +27,8 @@ export class DetalhamentoItemPage implements OnInit {
   loadItem() {
     this.itemSubscription = this.itemService.getItem(this.itemId).subscribe(data => {
       this.item = data;
+      console.log(data);
+      console.log(this.item);
     });
   }
 
