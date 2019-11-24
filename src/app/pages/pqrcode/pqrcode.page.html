@@ -8,12 +8,13 @@
 </ion-header>
 
 <ion-content class="ion-padding" >
-  <div  class="bg">
-  O aplicativo surgiu da necessidade de divulgação dos 
-  itens históricos da cidade de Palmares. Existe uma grande quantidade 
-  de locais de visitação pouco explorados pela cidade e o objetivo desse aplicativo 
-  é facilitar a vida dos turistas, visitantes e moradores que queiram 
-  conhecer mais da gistória dos predios, praças, monumentos e tudo 
-  que possa ser visitado na cidade.
-  </div>
+  <ion-button expand='block' margin (click)="goToQrScan()">Click to scan a barcode</ion-button>
+    <div *ngIf="scannedData">
+      <p>
+        Scanned Code Text : <b>{{ scannedData.result}}</b>
+      </p>
+      <p>
+        Scanned Code Format : <b>{{ scannedData}}</b>
+      </p>
+    </div>
 </ion-content>

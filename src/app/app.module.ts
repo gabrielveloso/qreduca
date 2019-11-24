@@ -15,22 +15,25 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import {GoogleMaps} from'@ionic-native/google-maps';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    BrowserModule,
+    BrowserModule,    
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
+    AngularFireAuthModule,    
     AngularFirestoreModule
     
   ],
   providers: [
     StatusBar,
+    QRScanner,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     GoogleMaps
