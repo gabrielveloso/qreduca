@@ -66,16 +66,23 @@ export class MapaPage implements OnInit {
   }
 
   async presentAlertConfirm(item) {
+
+    var googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${item.latitude}+${item.longitude}`;
+    var  WazeUrl = `https://waze.com/ul?ll=${item.latitude},${item.longitude}&z=10`;      
+ 
+
     const alert = await this.alertController.create({
-      header: 'Olá',
+      header: item.titulo,
       message: '<strong>Escolha umas das opções</strong>!!!',
       buttons: [
         {
           text: 'Mostrar rota com o Waze',          
           cssClass: 'primary',
           handler: (blah) => {
-            this.navCtrl.navigateForward('/detalhamento-item/'+item.id);
-            console.log('Confirm Cancel: blah');
+            //window.open(encodeURI(googleMapsUrl), '_system', 'location=no');
+            window.open(encodeURI(WazeUrl), '_system', 'location=no');
+            //this.navCtrl.navigateForward('/detalhamento-item/'+item.id);
+            //console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Mostrar história do ítem',
