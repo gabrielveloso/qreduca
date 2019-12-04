@@ -23,7 +23,7 @@ export class PQRCodePage implements OnInit {
 
   ligar(){
     if(this.isOn){
-      this.hideCamera();
+      //this.hideCamera();
       this.closeScanner();
       this.isOn = false;
     }else{
@@ -38,7 +38,7 @@ export class PQRCodePage implements OnInit {
       if (status.authorized) {
         // camera permission was granted
  
-        this.showCamera();
+        //this.showCamera();
         // start scanning
         let scanSub = this.qrScanCtrl.scan().subscribe((text: any) => {
           console.log('Scanned something', text);
@@ -48,8 +48,10 @@ export class PQRCodePage implements OnInit {
  
           this.closeScanner(); // hide camera preview
           scanSub.unsubscribe(); // stop scanning          
-          this.hideCamera();
+          //this.hideCamera();
+         
         });
+        this.qrScanCtrl.show();
  
       } else if (status.denied) {
         console.log('Scanned denied')

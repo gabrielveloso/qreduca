@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content class="ion-padding" >
-  <ion-button expand='block' margin (click)="ligar()">Scan a QRcode</ion-button>
+  <ion-button expand='block' margin (click)="ligar()">{{isOn ? "Stop scan" : "Start Scan"}}</ion-button>
     <div *ngIf="scannedData">
       <p>
         Scanned Code Text : <b>{{ scannedData.result}}</b>

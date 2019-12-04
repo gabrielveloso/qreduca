@@ -43,11 +43,6 @@ export class AppComponent {
       title:  'Lista',
       url:  '/lista-itens',
       icon: 'contact'
-    },
-    {
-      title:  'Adicionar',
-      url:  '/adicionar-item',
-      icon: 'contact'
     }
   ];
 
