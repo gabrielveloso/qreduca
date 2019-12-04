@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pqrcode',
@@ -12,14 +13,26 @@ export class PQRCodePage implements OnInit {
   QRSCANNED_DATA: string;
   isOn = false;
   scannedData: {};
-  constructor(private qrScanCtrl: QRScanner) {
+  constructor(private qrScanCtrl: QRScanner,
+    private navCtrl: NavController) {
     
    }
 
   ngOnInit() {
   }
 
+  ligar(){
+    if(this.isOn){
+      this.hideCamera();
+      this.closeScanner();
+      this.isOn = false;
+    }else{
+      this.goToQrScan();
+    }
+  }
+
   goToQrScan() {
+    this.isOn = true;
     this.qrScanCtrl.prepare()
     .then((status: QRScannerStatus) => {
       if (status.authorized) {
@@ -27,12 +40,14 @@ export class PQRCodePage implements OnInit {
  
         this.showCamera();
         // start scanning
-        let scanSub = this.qrScanCtrl.scan().subscribe((text: string) => {
+        let scanSub = this.qrScanCtrl.scan().subscribe((text: any) => {
           console.log('Scanned something', text);
-          this.scannedData = text;
+          console.log(text)
+          //this.scannedData = text;
+          this.navCtrl.navigateForward('/detalhamento-item/'+text.result);
  
-          this.qrScanCtrl.hide(); // hide camera preview
-          scanSub.unsubscribe(); // stop scanning
+          this.closeScanner(); // hide camera preview
+          scanSub.unsubscribe(); // stop scanning          
           this.hideCamera();
         });
  
@@ -54,8 +69,10 @@ export class PQRCodePage implements OnInit {
         window.document.querySelectorAll('ion-content')
               .forEach(element => {
                   const element1 = element.shadowRoot.querySelector('style');
-                  element1.innerHTML = element1.innerHTML
+                  if(element1 != null){
+                    element1.innerHTML = element1.innerHTML
                                                .replace('--background:var(--ion-background-color,#fff);', '--background: transparent');
+                  }
               });
     }, 300);
 }
@@ -64,8 +81,10 @@ hideCamera() {
     window.document.querySelectorAll('ion-content')
           .forEach(element => {
               const element1 = element.shadowRoot.querySelector('style');
-              element1.innerHTML = element1.innerHTML
+              if(element1 != null){
+                element1.innerHTML = element1.innerHTML
                                            .replace('--background: transparent', '--background:var(--ion-background-color,#fff);');
+              }
           });
 }
 
