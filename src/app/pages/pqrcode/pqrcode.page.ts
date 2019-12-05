@@ -13,7 +13,8 @@ export class PQRCodePage implements OnInit, OnDestroy {
   QRSCANNED_DATA: string;
   isOn = false;
   scannedData: {};
-  constructor(private qrScanCtrl: QRScanner, private navCtrl: NavController) { }
+  constructor(private qrScanCtrl: QRScanner, private navCtrl: NavController) {
+  }
 
   ngOnInit() {
     this.goToQrScan();
@@ -32,12 +33,17 @@ export class PQRCodePage implements OnInit, OnDestroy {
 
         // start scanning
         const scanSub = this.qrScanCtrl.scan().subscribe((text: any) => {
-          console.log('Scanned something', text);
-          console.log(text);
+          // console.log('Scanned something', text);
           // this.scannedData = text;
-          this.navCtrl.navigateForward('/detalhamento-item/' + text.result);
+          // this.navCtrl.navigateForward('/detalhamento-item/' + text.result);
+          // essa parâmetro não existe no Android Nativo
+          if (text.result) {
+            this.navCtrl.navigateForward('/detalhamento-item/' + text.result);
+          } else {
+            this.navCtrl.navigateForward('/detalhamento-item/' + text);
+          }
 
-          this.closeScanner(); // hide camera preview
+          // this.closeScanner(); // hide camera preview
           scanSub.unsubscribe(); // stop scanning
 
         });

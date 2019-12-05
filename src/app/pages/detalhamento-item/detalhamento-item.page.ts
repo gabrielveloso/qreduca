@@ -12,24 +12,20 @@ import { Subscription } from 'rxjs';
 export class DetalhamentoItemPage implements OnInit {
   private itemId: string = null;
   public item: Item = {};
-  private itemSubscription: Subscription;
+  public itemSubscription: Subscription;
 
-  constructor(private activatedRoute: ActivatedRoute, 
-    private itemService: ItemService) { 
-    this.itemId = this.activatedRoute.snapshot.params['id'];
-
-    if (this.itemId) this.loadItem();
+  constructor(private activatedRoute: ActivatedRoute, private itemService: ItemService) {
   }
 
   ngOnInit() {
-  }
-
-  loadItem() {
-    this.itemSubscription = this.itemService.getItem(this.itemId).subscribe(data => {
-      this.item = data;
-      console.log(data);
-      console.log(this.item);
-    });
+    this.itemId = this.activatedRoute.snapshot.params['id'];
+    if (this.itemId) {
+      this.itemSubscription = this.itemService.getItem(this.itemId).subscribe(data => {
+        this.item = data;
+        console.log(data);
+        console.log(this.item);
+      });
+    }
   }
 
 }
