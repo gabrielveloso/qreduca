@@ -3,25 +3,19 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Item Histórico</ion-title>
+    <ion-title>Patrimônio Histórico</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" color="medium">
-
-  <ion-list>
-    <ion-card>
-      <img src={{item.foto}} />
-      <ion-card-header>
-        <ion-card-title>{{item.titulo}}</ion-card-title>
-        <ion-card-subtitle>{{item.ano}}</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        {{item.descricao}}
-      </ion-card-content>
-    </ion-card>
-
-  </ion-list>
-
-
+<ion-content>
+  <ion-img [src]=item.foto></ion-img>
+  <div class="ion-padding">
+    <ion-text color="primary">
+      <h1>{{item.titulo}}</h1>
+    </ion-text>
+    <ion-text>
+      <h3>{{item.ano}}</h3>
+    </ion-text>
+    <p>{{item.descricao}}</p>
+  </div>
 </ion-content>

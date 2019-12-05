@@ -42,7 +42,7 @@ export class AppComponent {
     {
       title:  'Lista',
       url:  '/lista-itens',
-      icon: 'contact'
+      icon: 'list-box'
     }
   ];
 
