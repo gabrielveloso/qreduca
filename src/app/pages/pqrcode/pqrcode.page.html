@@ -1,20 +1,21 @@
 <ion-header>
   <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Leitor de QRcode</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" >
-  <ion-button expand='block' margin (click)="ligar()">{{isOn ? "Stop scan" : "Start Scan"}}</ion-button>
-    <div *ngIf="scannedData">
-      <p>
-        Scanned Code Text : <b>{{ scannedData.result}}</b>
-      </p>
-      <p>
-        Scanned Code Format : <b>{{ scannedData}}</b>
-      </p>
-    </div>
+<ion-content>
+  <ion-item lines="full">
+    <ion-icon name="qr-scanner" slot="start"></ion-icon>
+    <ion-label class="ion-text-wrap">
+      Leita o código para acessar o patrimônio histórico
+    </ion-label>
+  </ion-item>
+  <div *ngIf="!isOn" class="ion-padding ion-text-center">
+    <ion-spinner></ion-spinner>
+    <p>Preparando a câmera...</p>
+  </div>
 </ion-content>
